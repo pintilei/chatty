@@ -1,0 +1,171 @@
+@color1: #3b3e99;
+@color2: #ed145b;
+@color3: #989ad7;
+@color4: #f1f1fb;
+@white: #fff;
+@green: #adff2f;
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+
+#chatty {
+  height: 100%;
+
+  #sidebar {
+    background: @color1;
+    height: 100%;
+    color: @white;
+
+    #users-list {
+      position: relative;
+      overflow-y: scroll;
+      height: calc(~"100% - 84px");
+      padding-bottom: 100px;
+
+      .user {
+        padding: 30px 0;
+        transition: background-color .1s linear 0s;
+
+        .avatar {
+          max-width: 50px;
+          width: 50px;
+          height: 50px;
+          position: relative;
+
+          img {
+
+          }
+          &:after {
+            position: absolute;
+            right: 0;
+            top: -2px;
+            width: 16px;
+            height: 16px;
+            border: 2px solid @color1;
+            border-radius: 50%;
+            content: "";
+            background: @color2;
+            transition: all .2s linear 0s;
+          }
+
+        }
+
+        h3 {
+          font-size: 16px;
+          margin: 2px 0 5px 0;
+          font-weight: 400;
+          text-transform: capitalize;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 300;
+          color: rgba(255, 255, 255, 0.4);
+        }
+
+        span {
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          width: 50px;
+          background: @color1 - 10%;
+          padding: 6px 10px;
+          font-size: 12px;
+          border-radius: 12px;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.4);
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+          line-height: 12px;
+          transition: all .1s linear 0s;
+        }
+
+        &.online {
+          .avatar {
+            &:after {
+              background: @green;
+            }
+          }
+        }
+
+        &:hover {
+          background: @color2;
+          cursor: pointer;
+
+          .avatar {
+            &:after {
+              border-color: @white;
+            }
+          }
+
+          span {
+            background: @white;
+            color: @color2;
+          }
+        }
+
+      }
+    }
+
+    #top-bar {
+      padding: 25px 0;
+      text-align: center;
+      height: 84px;
+    }
+
+
+    &:after {
+      width: 100%;
+      height: 100px;
+      bottom: 0;
+      content: "";
+      position: absolute;
+      left: 0;
+
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3b3e99+100&0+0,1+100 */
+      background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(59,62,153,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(59,62,153,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(59,62,153,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#3b3e99',GradientType=0 ); /* IE6-9 */
+    }
+  }
+
+  #chat-box {
+    position: relative;
+    height: 100%;
+
+    #message-input {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      padding: 0 15px;
+
+      #message {
+        height: 50px;
+        border: none;
+        box-shadow: none;
+        background: @color4;
+        border-radius: 25px;
+        padding: 0 25px;
+      }
+    }
+  }
+
+}
+
